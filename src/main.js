@@ -1,4 +1,4 @@
-import {startParsingInAllPages} from './Parser.js'
+import {startParsingInAllPages, textParsing} from './Parser.js'
 
-
-startParsingInAllPages()
+//textParsing(5)
+startParsingInAllPages(15, 10841)

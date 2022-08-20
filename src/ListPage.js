@@ -4,12 +4,12 @@ export class ListPage {
     document
     pageNum
 
-    ListPage(pageNum = 1) {
+    constructor(pageNum = 1) {
         this.pageNum = pageNum
     }
 
     _getPageLink(pageNum) {
-        return `https://reestr.nostroy.ru/reestr?sort=m.id&direction=asc&page=${pageNum}`
+        return `https://reestr.nostroy.ru/reestr?m_fulldescription=&m_shortdescription=&m_inn=&m_ogrnip=&bms_id=2&bmt_id=&u_registrationnumber=&sort=m.id&direction=asc&page=${pageNum}`
     }
 
     async initDocument() {
