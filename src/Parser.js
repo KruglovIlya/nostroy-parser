@@ -8,7 +8,7 @@ export async function startParsingInAllPages(speed, endPageNum) {
         console.log(totalCount += await parsingIteration(i, i + speed))
 }
 
-export async function textParsing(pageNum) {
+export async function testParsing(pageNum) {
     parsingIteration(pageNum, pageNum + 1)
 }
 
