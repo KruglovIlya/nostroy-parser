@@ -2,7 +2,7 @@ import { getDOMByUrl } from './instrumental.js'
 import fs from 'fs'
 
 const pathToLinkList = 'result-two.txt'
-const pathToResult = 'final-result.csv'
+const pathToResult = 'additional-result.csv'
 const speed = 50
 
 var source = fs.readFileSync(pathToLinkList, 'utf-8').split('\n')
@@ -34,9 +34,15 @@ async function readDateFromSite(link) {
     let tableRow = []
     if (link == '')
         return
-    let document = await getDOMByUrl(link)
 
-    document.querySelectorAll("#tabs-1 > table > tbody > tr > td").forEach(node => tableRow.push(node.textContent));
+    tableRow.push((await getDOMByUrl(link)).querySelector("#tabs-1 > table > tbody > tr:nth-child(5) > td").textContent)
+
+    let document = await getDOMByUrl(link + '/compensation')
+
+    document.querySelectorAll("#block-compensation-member-content > div > div").forEach(node => {
+        tableRow.push(node.textContent)
+        tableRow.push(node.querySelector('u').textContent)
+    });
 
     result.push(tableRow)
 }
